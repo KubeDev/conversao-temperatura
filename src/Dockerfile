@@ -6,6 +6,7 @@ COPY . .
 EXPOSE 8080
 CMD ["node", "server.js"]
 
+
 FROM alpine:3.14 as final
 WORKDIR /app
 COPY --from=build /app/ .
