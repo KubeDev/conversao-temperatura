@@ -1,6 +1,6 @@
 FROM node
 WORKDIR /app
-COPY PACKAGE.JSON ./
+COPY packeg.json ./
 RUN npm install 
 COPY . .
 EXPOSE 8080
