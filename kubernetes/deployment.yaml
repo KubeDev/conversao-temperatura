@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: kubernetes-deployment
+
+spec:
+  replicas: 1
+  
+  selector:
+    matchLabels:
+      app: web
+  
+  template:
+    metadata:
+      labels:
+        app: web
+    
+    spec:
+      containers:
+        - name: web
+          image: diogoferreira/conversao-temperatura:v1
+          ports:
+            - containerPort: 80
