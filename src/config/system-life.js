@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+const NodeHog = require('nodehog');
 
 let isHealth = true;
 let readTime = new Date(Date.now());
@@ -7,7 +8,7 @@ let isRead = () => {
     return readTime < new Date(Date.now());
 };
 
-app.put('/stress/tempo/:tempoStress/intervalo/:intervalo/ciclos/:ciclos', (req, res) => {
+router.put('/stress/tempo/:tempoStress/intervalo/:intervalo/ciclos/:ciclos', (req, res) => {
 
     const elemento = 'cpu';
     const tempoStress = req.params.tempoStress * 1000;
