@@ -17,13 +17,13 @@
 
 Construir o docker file 
 
-FROM node:14.17.5
-WORKDIR /app
-COPY package*.json ./
-RUN npm install
-COPY . .
-EXPOSE 8080
-CMD ["node", "server.js"]
+FROM node:14.17.5  
+WORKDIR /app  
+COPY package*.json ./  
+RUN npm install  
+COPY . .  
+EXPOSE 8080  
+CMD ["node", "server.js"]  
 
 ## Passo-2
 Dar o build e construir a imagem docker
