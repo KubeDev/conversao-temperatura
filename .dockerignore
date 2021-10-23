@@ -1,4 +1,5 @@
 ./src/node_modules
 ./src/.git
 ./src/.gitignore
-Dockerfile
+./dockerignore
+./Dockerfile
