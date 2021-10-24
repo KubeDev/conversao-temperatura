@@ -14,7 +14,7 @@ Para testarmos a aplicação, temos que executar dois passos:
 <a name="iniciar-container"></a>
 ### Iniciando o contêiner
 
-Execute o comando que abaixo para baixar a imagem e gerar o contêiner.
+Execute o comando abaixo para baixar a imagem e gerar o contêiner.
 ```bash
 docker container run -d --rm \
     --name conversor \
@@ -32,5 +32,5 @@ CONTAINER ID   IMAGE                                      COMMAND            CRE
 ```
 <a name="acessando-app"></a>
 ### Acessando o app
-Se o passo 1 foi executado sem problemas, basta acessar a aplicação em sua maquina em [http://localhost:8080](http://localhost:8080 "localhost:8080"), a resposta será uma tela como a que esta abaixo:
+Se o passo 1 foi executado sem problemas, basta acessar a aplicação em sua maquina em [http://localhost:8080](http://localhost:8080 "localhost:8080"), a resposta será uma tela como a que está abaixo:
 ![Conversor de temperatura](/doc/conversor-de-temperatura.png "Conversor de temperatura")
