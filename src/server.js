@@ -12,7 +12,7 @@ app.use(config.middlewares.healthMid);
 app.use('/', config.routers);
 app.use(bodyParser.urlencoded({ extended: false }))
 app.set('view engine', 'ejs');
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument)); 
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.get('/fahrenheit/:valor/celsius', (req, res) => {
 
@@ -30,7 +30,7 @@ app.get('/celsius/:valor/fahrenheit', (req, res) => {
 
 app.get('/', (req, res) => {
 
-    res.render('index',{valorConvertido: ''});
+    res.render('index', { valorConvertido: '' });
 });
 
 app.post('/', (req, res) => {
@@ -44,9 +44,9 @@ app.post('/', (req, res) => {
         }
     }
 
-    res.render('index', {valorConvertido: resultado});
- });
+    res.render('index', { valorConvertido: resultado });
+});
 
-app.listen(8080, () => {
-    console.log("Servidor rodando na porta 8080");
+app.listen(8089, () => {
+    console.log("Servidor rodando na porta 8089");
 });
