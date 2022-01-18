@@ -4,8 +4,8 @@ This repository is the first challenge of the [Kubernetes initiative](https://in
 
 # :hammer: Build image
 
-`$ docker image build -t vschmidt/conversor-temperatura:v1 .`
+`$ docker image build -t vinicioschmidt/conversor-temperatura:v1 .`
 
 # :rocket: Run
 
-`$ docker container run -d -p 8080:8080 vschmidt/conversor-temperatura:v1`
+`$ docker container run -d -p 8080:8080 vinicioschmidt/conversor-temperatura:v1`
