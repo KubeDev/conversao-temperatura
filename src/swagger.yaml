@@ -44,8 +44,7 @@ paths:
           schema:
             type: "array"
             items:
-              $ref: "#/definitions/Temperatura
-              "
+              $ref: "#/definitions/Temperatura"
         "400":
           description: "Bad Input Parameter"
 
