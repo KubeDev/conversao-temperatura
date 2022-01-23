@@ -1,11 +1,23 @@
-# Challange 1
+# :fire: Introduction
 
-This repository is the first challenge of the [Kubernetes initiative](https://iniciativakubernetes.com.br/).
+This repository contains the challenges of the [Kubernetes initiative](https://iniciativakubernetes.com.br/).
 
-# :hammer: Build image
+# Challenge 1
+
+## :hammer: Build image
 
 `$ docker image build -t vinicioschmidt/conversor-temperatura:v1 .`
 
-# :rocket: Run
+## :rocket: Run
 
 `$ docker container run -d -p 8080:8080 vinicioschmidt/conversor-temperatura:v1`
+
+# Challenge 2
+
+## :hammer: Create cluster (with k3d)
+
+`$ k3d cluster create mycluster --servers 3 --agents 3 -p "8081:30000@loadbalancer"`
+
+## :rocket: Run application (with kubectl)
+
+`$ kubectl apply -f .\deployment.yaml `
