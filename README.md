@@ -33,7 +33,7 @@ docker container run -d \
   --name app-conversao-temperatura \
   --restart unless-stopped \
   -p 8080:8080 \
-  tallesalencar/conversao-temperatura:lastest
+  tallesalencar/conversao-temperatura:latest
 ```
 
 Para visualização a aplicação. Digite o comando no seu navegador.
