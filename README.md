@@ -5,7 +5,7 @@
 Download do projeto.
 
 ```bash
-git clone https://github.com/tallesemmanuel/conversao-temperatura.git
+git clone https://github.com/KubeDev/conversao-temperatura.git
 ```
 
 Para criação de uma nova imagem.
