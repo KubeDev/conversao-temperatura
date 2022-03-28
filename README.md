@@ -5,13 +5,13 @@
 Download do projeto.
 
 ```bash
-git clone https://github.com/KubeDev/conversao-temperatura.git
+git clone https://github.com/tallesemmanuel/conversao-temperatura.git
 ```
 
 Para criação de uma nova imagem.
 
 ```bash
-docker build -t username-hubdocker/conversao-temperatura:latest .
+docker build -t tallesalencar/conversao-temperatura:latest .
 ```
 
 Para visualizar a imagem.
@@ -27,7 +27,7 @@ docker container run -d \
   --name app-conversao-temperatura \
   --restart unless-stopped \
   -p 8080:8080 \
-  username-hubdocker/conversao-temperatura:lastest
+  tallesalencar/conversao-temperatura:lastest
 ```
 
 Para visualização a aplicação. Digite o comando no seu navegador.
