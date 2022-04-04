@@ -31,4 +31,4 @@ spec:
   ports:
   - protocol: TCP
     port: 8080
-  type: NodePort
+  type: LoadBalancer
