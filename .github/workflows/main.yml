@@ -36,3 +36,25 @@ jobs:
           tags: |
             rogeriostos/conversao-temperatura:latest
             rogeriostos/conversao-temperatura:${{ github.run_number }}
+  CD:
+    needs: [CI]
+    runs-on: ubuntu-latest
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+      
+      - name: Kubernetes Set Context
+        uses: Azure/k8s-set-context@v2
+        with:
+          # Acceptable values: kubeconfig or service-account or service-principal
+          method: kubeconfig
+          # Contents of kubeconfig file
+          kubeconfig: ${{ secrets.CLUSTER_DIGITALOCEAN_INICIATIVA_KUBERNETS }}
+      
+      - name: Deploy to Kubernetes cluster
+        uses: Azure/k8s-deploy@v3.0
+        with:
+          # Path to the manifest files which will be used for deployment.
+          manifests: k8s/deployment.yml 
+          # Fully qualified resource URL of the image(s) to be used for substitutions on the manifest files Example: contosodemo.azurecr.io/helloworld:test
+          images: rogeriostos/conversao-temperatura:${{ github.run_number }}  
