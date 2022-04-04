@@ -44,4 +44,4 @@ jobs:
         with:
           images: 763ed2a0a734/conversao-temperatura:latest
           manifests: |
-            k8s/deployment.yaml
+            src/kubernetes/deployment.yaml
