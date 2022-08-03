@@ -1,1 +1,1 @@
-### repositório base para o cumprimento dos desafios do Iniciativa DevOps✅
+### Repositório base para o cumprimento dos desafios do Iniciativa DevOps✅
