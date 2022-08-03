@@ -1,4 +1,10 @@
-apiVersion:
-kind:
+apiVersion: v1
+kind: pod
 metadata:
-spec:
+  name: testpod
+spec: 
+  containers:
+    name: appweb
+    image: fabricioveronez/web-page:blue
+    ports:
+      conteinerPort: 80   
