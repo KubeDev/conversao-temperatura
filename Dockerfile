@@ -1,1 +1,0 @@
-WORKDIR /app
