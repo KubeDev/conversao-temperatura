@@ -35,8 +35,12 @@ jobs:
         with:
           name: src
           path: C:\Users\Olin\src
-
-  CD: 
+      - name: discord-webhook
+        uses: johnnyhuy/actions-discord-git-webhook@v1.0.0
+        with:
+          webhook_url: https://discord.com/channels/@me
+          content: "Test"
+ # CD: 
     runs-on: windows
     needs: CI
     environment:
