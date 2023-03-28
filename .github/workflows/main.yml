@@ -1,0 +1,52 @@
+name: CI-CD
+
+on:
+#  workflow_dispatch:
+  push:
+    branches: ["main"]
+    
+jobs:
+  CI: 
+    runs-on: windows
+    
+    steps:
+      - uses: actions/checkout@v3.4.0
+      - name: Autenticar no dokcer hub
+        uses: docker/login-action@v2.1.0
+        with:
+          username: ${{ secrets.DOCKERHUB_USUARIO}}
+          password: ${{ secrets.DOCKERHUB_PASS }}
+         # username: ${{ secrets.DOCKERHUB_USUARIO }}
+         # password: ${{ secrets.DOCKERHUB_PASS }}
+      - name: Contruindo imagem Docker
+        uses: docker/build-push-action@v4.0.0
+        with:
+          context: ./src
+          file: ./src/Dockerfile
+          push: true
+          tags: |
+            nilozjr/conversor-temp-2023:${{github.run_number}}
+            nilozjr/conversor-temp-2023:latest
+      - name: Upload do artefato
+        uses: actions/upload-artifact@v3.1.2
+        with:
+          name: src
+          path: ./src/*
+      - name: Download a Build Artifact
+        uses: actions/download-artifact@v2.1.1
+        with:
+          name: src
+          path: C:\Users\Olin\src
+
+  CD: 
+    runs-on: windows
+    needs: CI
+    environment:
+      name: homol
+      url: 'https://www.cassems.com.br'
+    steps:
+      - name: deploy
+        run: |
+          cd C:\Users\Olin\src
+          docker compose down
+          docker compose up -d

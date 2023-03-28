@@ -1,0 +1,27 @@
+name: CI
+
+on:
+#  workflow_dispatch:
+  push:
+    branches: ["main"]
+    
+jobs:
+  CI: 
+    runs-on: windows
+    
+    steps:
+      - uses: actions/checkout@v3.4.0
+      - name: Autenticar no dokcer hub
+        uses: docker/login-action@v2.1.0
+        with:
+          username: ${{ secrets.DOCKERHUB_USER }}
+          password: ${{ secrets.DOCKERHUB_PASS }}
+      - name: Contruindo imagem Docker
+        uses: docker/build-push-action@v4.0.0
+        with:
+          context: ./src
+          file: ./src/Dockerfile
+          push: true
+          tags: |
+            nilozjr/conversor-temp-2023:${{github.run_number}}
+            nilozjr/conversor-temp-2023:latest   
