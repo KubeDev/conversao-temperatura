@@ -41,7 +41,7 @@ jobs:
     needs: CI
     environment:
       name: homol
-      url: 'https://www.cassems.com.br'
+      url: 'http://localhost:8080'
     steps:
       - name: deploy
         run: |
