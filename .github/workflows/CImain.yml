@@ -42,7 +42,7 @@ jobs:
       - name: Discord Notifier
         uses: fateyan/action-discord-notifier@v1.2.0
         with:
-          webhook: https://discord.com/channels/@me
+          webhook: https://discord.com/channels/@me/1081202923314348032
           message-title: "Ci aguardando aprovação"  
   CD: 
     runs-on: windows
