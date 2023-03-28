@@ -35,14 +35,17 @@ jobs:
         with:
           name: src
           path: C:\Users\Olin\src
-      - name: discord-webhook
-        uses: johnnyhuy/actions-discord-git-webhook@v1.0.0
-        with:
+  not: 
+    runs-on: ubuntu-latest
+    needs: CI
+        - name:discord-webhook
+          uses:johnnyhuy/actions-discord-git-webhook@v1.0.0
+          with:
           webhook_url: https://discord.com/channels/@me
           content: "Test"
   CD: 
     runs-on: windows
-    needs: CI
+    needs: not
     environment:
       name: homol
       url: 'http://localhost:8080'
