@@ -37,12 +37,12 @@ jobs:
           path: C:\Users\Olin\src
   not: 
     runs-on: ubuntu-latest
-    needs: CI
-        - name:discord-webhook
-          uses:johnnyhuy/actions-discord-git-webhook@v1.0.0
-          with:
-          webhook_url: https://discord.com/channels/@me
-          content: "Test"
+        - name:Discord Notifier
+          uses:fateyan/action-discord-notifier@v1.2.0
+          with
+            webhook:https://discord.com/channels/@me
+            message-title:"Test"
+            
   CD: 
     runs-on: windows
     needs: not
