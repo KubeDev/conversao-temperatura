@@ -40,7 +40,7 @@ jobs:
         with:
           webhook_url: https://discord.com/channels/@me
           content: "Test"
- # CD: 
+  CD: 
     runs-on: windows
     needs: CI
     environment:
