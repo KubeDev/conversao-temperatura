@@ -37,12 +37,13 @@ jobs:
           path: C:\Users\Olin\src
   not: 
     runs-on: ubuntu-latest
-        - name:Discord Notifier
-          uses:fateyan/action-discord-notifier@v1.2.0
-          with
-            webhook:https://discord.com/channels/@me
-            message-title:"Test"
-            
+    needs: CI
+    steps:
+      - name: Discord Notifier
+        uses: fateyan/action-discord-notifier@v1.2.0
+        with:
+          webhook: https://discord.com/channels/@me
+          message-title: "Ci aguardando aprovação"  
   CD: 
     runs-on: windows
     needs: not
