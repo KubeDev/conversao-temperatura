@@ -24,4 +24,27 @@ jobs:
           push: true
           tags: |
             nilozjr/conversor-temp-2023:${{github.run_number}}
-            nilozjr/conversor-temp-2023:latest   
+            nilozjr/conversor-temp-2023:latest
+      - name: Upload do artefato
+        uses: actions/upload-artifact@v3.1.2
+        with:
+          name: src
+          path: ./src/*
+      - name: Download a Build Artifact
+        uses: actions/download-artifact@v2.1.1
+        with:
+          name: src
+          path: C:\Users\Olin\src
+
+  CD: 
+    runs-on: windows
+    needs: CI
+    environment:
+      name: homol
+      url: 'https://www.cassems.com.br'
+    steps:
+      - name: deploy
+        run: |
+          cd C:\Users\Olin\src
+          docker compose down
+          docker compose up -d     
