@@ -23,8 +23,8 @@ jobs:
           file: ./src/Dockerfile
           push: true
           tags: |
-            nilozjr/teste-kube-news:${{github.run_number}}
-            nilozjr/teste-kube-news:latest
+            nilozjr/conversor-temp-2023:${{github.run_number}}
+            nilozjr/conversor-temp-2023:latest
       - name: Upload do artefato
         uses: actions/upload-artifact@v3.1.2
         with:
