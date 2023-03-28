@@ -1,0 +1,18 @@
+name: CI-CD
+
+on:
+#  workflow_dispatch:
+  push:
+    branches: ["main"]
+    
+jobs:
+  CI: 
+    runs-on: windows
+    
+    steps:
+      - uses: actions/checkout@v3.4.0
+      - name: Autenticar no dokcer hub
+        uses: docker/login-action@v2.1.0
+        with:
+          username: ${{ secrets.DOCKERHUB_USER }}
+          password: ${{ secrets.DOCKERHUB_PASS }}
