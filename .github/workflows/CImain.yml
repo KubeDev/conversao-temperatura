@@ -46,7 +46,7 @@ jobs:
           message-title: "Ci aguardando aprovação"  
   CD: 
     runs-on: windows
-    needs: not
+    needs: message
     environment:
       name: homol
       url: 'http://localhost:8080'
