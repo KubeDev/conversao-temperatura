@@ -38,6 +38,7 @@ jobs:
   
   CD: 
     runs-on: windows
+    needs: CI
     environment:
       name: homol
       url: 'http://localhost:8080'
