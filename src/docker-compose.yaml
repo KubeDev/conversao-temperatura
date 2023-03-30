@@ -1,0 +1,7 @@
+version: '3.7'  
+services:
+    kube-news:
+      image: nilozjr/conversor-temp-2023:latest
+      container_name: kubenews
+      ports:
+        - "8080:8080"
