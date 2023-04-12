@@ -1,0 +1,60 @@
+swagger: "2.0"
+info:
+  description: "API de conversão de temperatura - 1.0"
+  version: "1.0.0"
+  title: "Conversão de temperatura"
+  contact:
+    email: "fabricio@kubedev.io"
+paths:
+  /fahrenheit/{valor}/celsius:
+    get:
+      description: "Converte de Fahrenheit para Celsius"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "valor"
+        in: "path"
+        description: "Valor que será convertido"
+        required: true
+        type: "number"
+      responses:
+        "200":
+          description: "Resultado da conversão"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Temperatura"
+        "400":
+          description: "Bad Input Parameter"
+
+  /celsius/{valor}/fahrenheit:
+    get:
+      description: "Converte de Celsius para Fahrenheit"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "valor"
+        in: "path"
+        description: "Valor que será convertido"
+        required: true
+        type: "number"
+      responses:
+        "200":
+          description: "Resultado da conversão"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Temperatura
+              "
+        "400":
+          description: "Bad Input Parameter"
+
+definitions:
+  Temperatura:
+    type: "object"
+    required:
+    - "valor"
+    properties:
+      valor:
+        type: "number"
+        example: 500.0
