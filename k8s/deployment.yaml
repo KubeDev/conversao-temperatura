@@ -1,43 +1,6 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
- name: postgre
-spec:
- selector:
-  matchLabels:
-   app: postgre
- template:
-  metadata:
-   labels:
-    app: postgre
-  spec:
-   containers:
-    - name: postgre
-      image: postgres:15.0
-      ports:
-      - containerPort: 5432
-      env:
-      - name: POSTGRES_DB
-        value: "kubenews"
-      - name: POSTGRES_USER
-        value: "kubenews"
-      - name: POSTGRES_PASSWORD
-        value: "Pg#132"
----
-apiVersion: v1
-kind: Service
-metadata:
- name: postgre
-spec:
- selector:
-  app: postgre
- ports:
-  - port: 5432
- type: ClusterIP
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
  name: web
 spec:
  selector:
@@ -53,11 +16,16 @@ spec:
       image: jeniferdm/conversao-temperatura:v1
       ports:
       - containerPort: 8080
-      env:
-      - name: DB_DATABASE
-        value: "kubedevnews"
-      - name: DB_USERNAME
-        value: "kubedevnews"
-      - name: DB_PASSWORD
-        value: "Pg#132"
 ---
+apiVersion: v1
+kind: Service
+metadata:
+ name: web
+spec:
+ selector:
+  app: web
+ ports:
+  - port: 80
+    targetPort: 8080
+    nodePort: 30000
+ type: NodePort

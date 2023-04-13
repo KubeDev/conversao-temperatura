@@ -1,7 +1,11 @@
 {
   "ExpandedNodes": [
     "",
-    "\\src"
+    "\\k8s",
+    "\\src",
+    "\\src\\config",
+    "\\src\\test"
   ],
+  "SelectedNode": "\\src\\config\\system-life.js",
   "PreviewInSolutionExplorer": false
 }
