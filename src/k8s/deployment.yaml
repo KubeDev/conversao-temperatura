@@ -26,8 +26,5 @@ spec:
   selector:
     app: web 
   ports:
-    - protocol: TCP
-      port: 8080
-      nodePort: 30000
-  type: NodePort
-
+    - port: 80
+      targertPort: 8080
