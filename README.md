@@ -17,3 +17,6 @@ make build
 
 ### Rodando
 ``` make run ``` 
+
+# Labels
+Labels são os marcadores do pods e o classificam.
