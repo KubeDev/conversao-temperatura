@@ -1,18 +1,16 @@
 const express = require('express');
 const os = require('os')
 const app = express();
-const swaggerUi = require('swagger-ui-express');
-const YAML = require('yamljs');
-const swaggerDocument = YAML.load('./swagger.yaml');
 const conversor = require('./convert')
 const bodyParser = require('body-parser');
 const config = require('./config/system-life');
+const path = require('path');
 
 app.use(config.middlewares.healthMid);
 app.use('/', config.routers);
 app.use(bodyParser.urlencoded({ extended: false }))
+app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument)); 
 
 app.get('/fahrenheit/:valor/celsius', (req, res) => {
 
@@ -30,7 +28,7 @@ app.get('/celsius/:valor/fahrenheit', (req, res) => {
 
 app.get('/', (req, res) => {
 
-    res.render('index',{valorConvertido: ''});
+    res.render('index',{valorConvertido: '', maquina: os.hostname()});
 });
 
 app.post('/', (req, res) => {
