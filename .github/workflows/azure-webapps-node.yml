@@ -49,11 +49,14 @@ jobs:
         npm run test --if-present
       working-directory: ./src
 
-    - name: Upload artifact for deployment job
-      uses: actions/upload-artifact@v3
+
+    - uses: azure/docker-login@v1
       with:
-        name: node-app
-        path: ./src
+        username: ${{ secrets.REGISTRY_USERNAME }}
+        password: ${{ secrets.REGISTRY_PASSWORD }}
+    - run: |
+        docker build . -t fabricioveronez/conversao-temperatura:${{ github.sha }}
+        docker push fabricioveronez/conversao-temperatura:${{ github.sha }}     
 
 
   deploy:
@@ -66,14 +69,6 @@ jobs:
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
 
     steps:
-    - name: Download artifact from build job
-      uses: actions/download-artifact@v3
-      with:
-        name: node-app
-        
-    - name: npm install, build, and test
-      run: |
-        ls -l
     
     # - uses: azure/login@v1
     #   with:
@@ -85,4 +80,4 @@ jobs:
       with:
         app-name: ${{ env.AZURE_WEBAPP_NAME }}
         publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
-        package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
+        images: 'fabricioveronez/conversao-temperatura:${{ github.sha }}'
