@@ -49,7 +49,6 @@ jobs:
         npm run test --if-present
       working-directory: ./src
 
-
     - uses: azure/docker-login@v1
       with:
         username: ${{ secrets.REGISTRY_USERNAME }}
@@ -58,6 +57,21 @@ jobs:
         docker build . -t fabricioveronez/conversao-temperatura:${{ github.sha }}
         docker push fabricioveronez/conversao-temperatura:${{ github.sha }}     
 
+    - name: Build and push Docker images
+    # You may pin to the exact commit or the version.
+    # uses: docker/build-push-action@3b5e8027fcad23fda98b2e3ac259d8d67585f671
+      uses: docker/build-push-action@v4.0.0
+      with:
+        # Build's context is the set of files located in the specified PATH or URL
+        context: ./src
+        # Path to the Dockerfile
+        file: ./src/Dockerfile
+        pull: # optional, default is false
+        # Push is a shorthand for --output=type=registry
+        push: true
+        tags: |
+          fabricioveronez/conversao-temperatura:${{ github.sha }}
+          fabricioveronez/conversao-temperatura:latest
 
   deploy:
     permissions:
