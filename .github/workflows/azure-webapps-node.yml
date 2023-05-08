@@ -70,6 +70,10 @@ jobs:
       uses: actions/download-artifact@v3
       with:
         name: node-app
+        
+    - name: npm install, build, and test
+      run: |
+        ls -l
     
     - uses: azure/login@v1
       with:
