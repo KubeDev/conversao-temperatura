@@ -73,6 +73,10 @@ jobs:
     #     name: node-app
 
     - uses: actions/checkout@v3
+    
+    - uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
 
     - name: 'Deploy to Azure WebApp'
       id: deploy-to-webapp
