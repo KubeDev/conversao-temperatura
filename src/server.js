@@ -42,7 +42,7 @@ app.post('/', (req, res) => {
         }
     }
 
-    res.render('index', {valorConvertido: resultado});
+    res.render('index', {valorConvertido: resultado, "maquina": os.hostname()});
  });
 
 app.listen(8080, () => {
