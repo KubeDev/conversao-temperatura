@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app
+  labels:
+    app: web
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: web
+  template:
+    metadata:
+      name: app
+      labels:
+        app: web
+    spec:
+      containers:
+        - name: app
+          image: mauriciotp/hello-go:latest
+          ports:
+            - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: web-service
+spec:
+  selector:
+    app: web
+  ports:
+    - port: 80
+      protocol: TCP
+      targetPort: 8080
+      nodePort: 30000
+  type: NodePort
