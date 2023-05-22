@@ -1,0 +1,23 @@
+# pod template & replics -> replicas desejadas == replicas corrente 
+#assegurar (resilieñcia, escalabilidade)
+
+apiVersions: apps/v1
+kind: ReplicaSet
+metadata:
+  name: testreplicaset
+spec:
+  replicas: 3 #number replics
+  selector:
+    matchLabels:
+      app: appweb
+   template:
+      metadata:
+       labels:  # name ramdon
+        app: appweb 
+      spec: 
+        containers:
+          name: appweb
+          #image: fabricioveronez/web-page:blue
+          image: fabricioveronez/web-page:green
+          ports:
+            conteinerPort: 80 

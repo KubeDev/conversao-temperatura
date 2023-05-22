@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: pod
+metadata:
+  name: testpodblue # no labels
+spec: 
+  containers:
+    name: appweb
+    image: fabricioveronez/web-page:blue
+    ports:
+      conteinerPort: 80   
+      
+--- # --- permite declarar objetos num mesmo arquivo
+
+apiVersion: v1
+kind: pod
+metadata:
+  name: testpodgreen
+  labels: # with labels
+  app: green
+spec: 
+  containers:
+    name: appweb
+    image: fabricioveronez/web-page:green
+    ports:
+      conteinerPort: 80   
