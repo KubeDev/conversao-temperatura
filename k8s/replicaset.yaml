@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: meureplicaset
+spec:
+  replicas: 0
+  selector:
+    matchLabels:
+      app: web
+  template:
+    metadata:
+      labels:
+        app: web
+    spec:
+      containers:
+      - name: site
+        image: fabricioveronez/web-page:green
+        ports:  
+        - containerPort: 80
