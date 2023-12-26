@@ -16,7 +16,7 @@ describe('Conversor de Temperatura', () => {
 
       const resultado = convert.celsiusFahrenheit(55);
 
-      expect(resultado).to.equal(130);
+      expect(resultado).to.equal(131);
       done();
   
     });    
