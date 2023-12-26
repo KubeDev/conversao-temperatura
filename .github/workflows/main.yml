@@ -34,8 +34,8 @@ jobs:
         # uses: docker/build-push-action@4a13e500e55cf31b7a5d59a38ab2040ab0f42f56
         uses: docker/build-push-action@v5.1.0
         with:
-          context: src
-          file: src/Dockerfile
+          context: ./src
+          file: ./src/Dockerfile
           push: true
           tags: |
             renatodecker/aula-conversao-temperatura:v1
