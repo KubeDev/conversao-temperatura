@@ -8,18 +8,15 @@ on:
 
   workflow_dispatch:
 
-  fork:
-    build:
+  jobs:
+    CI:
       runs-on: ubuntu-latest
 
       steps:
         - uses: actions/checkout@v2
-        - name: Run a one-line script
-          run: echo Hello, World!
 
-        - name: Run a multi-line script
-          run: |
-            echo Add other actions to build,
-            echo teste, and deploy your project.
-
+        - name: Setup do NodeJS
+          uses: actions/setup-node@v4.0.1
+          with:
+            node-version: 16.13.2
             
