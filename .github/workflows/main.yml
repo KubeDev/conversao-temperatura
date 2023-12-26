@@ -44,6 +44,6 @@ jobs:
           file: ./src/Dockerfile
           push: true
           tags: |
-            renatodecker/aula-conversao-temperatura:v1
+            renatodecker/aula-conversao-temperatura:${{github.run_number}}
             renatodecker/aula-conversao-temperatura:latest
             
