@@ -1,0 +1,47 @@
+name: CI+CD
+
+on:
+  push:
+    branches: [ conf-kubernetes ]
+
+  workflow_dispatch:
+
+jobs:
+  CI:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Docker Login
+        uses: docker/login-action@v1.14.1
+        with:    
+          username: ${{ secrets.DOCKERHUB_USER }}
+          password:  ${{ secrets.DOCKERHUB_PWD }}
+
+      - name: Docker build and Push
+        uses: docker/build-push-action@v2.7.0
+        with:
+          context: ./src
+          file: ./src/Dockerfile
+          push: true
+          tags: 
+            763ed2a0a734/conversao-temperatura:latest
+  CD:
+    needs: [CI]
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v2
+      - name: Kubernetes Set Context
+        uses: Azure/k8s-set-context@v1.1
+        with:
+          method: kubeconfig
+          kubeconfig: ${{ secrets.K8S_CONFIG }}
+          
+      - name: Deploy to Kubernetes cluster
+        uses: Azure/k8s-deploy@v1.3
+        with:
+          images: 763ed2a0a734/conversao-temperatura:latest
+          manifests: |
+            src/kubernetes/deployment.yaml
