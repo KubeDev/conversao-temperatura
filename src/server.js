@@ -7,6 +7,9 @@ const config = require('./config/system-life');
 const path = require('path');
 const promBundle = require('express-prom-bundle');
 
+/*
+algo
+*/
 const metricsMiddleware = promBundle({
   includePath: true,
   includeStatusCode: true,
@@ -27,21 +30,18 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 app.get('/fahrenheit/:valor/celsius', (req, res) => {
-
     let valor = req.params.valor;
     let celsius = conversor.fahrenheitCelsius(valor);
     res.json({ "celsius": celsius, "maquina": os.hostname() });
 });
 
 app.get('/celsius/:valor/fahrenheit', (req, res) => {
-
     let valor = req.params.valor;
     let fahrenheit = conversor.celsiusFahrenheit(valor);
     res.json({ "fahrenheit": fahrenheit, "maquina": os.hostname() });
 });
 
 app.get('/', (req, res) => {
-
     res.render('index',{valorConvertido: '', maquina: os.hostname()});
 });
 
